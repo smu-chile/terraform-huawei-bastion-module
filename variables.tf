@@ -20,3 +20,7 @@ variable "flavor_id" {
   type        = string
   description = "Tipo de instancia de bastion. p.e: s3.large.4"
 }
+
+variable "default_tags" {
+  description = "tags by default"
+}

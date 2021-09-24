@@ -46,6 +46,7 @@ resource "huaweicloud_compute_instance" "bastion" {
   network {
     uuid = var.subnet_id
   }
+  tags = var.default_tags
 }
 
 resource "huaweicloud_vpc_eip" "myeip" {
@@ -58,6 +59,7 @@ resource "huaweicloud_vpc_eip" "myeip" {
     share_type  = "PER"
     charge_mode = "traffic"
   }
+  tags = var.default_tags
 }
 
 resource "huaweicloud_compute_eip_associate" "associated" {

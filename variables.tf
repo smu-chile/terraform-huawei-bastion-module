@@ -25,7 +25,7 @@ variable "default_tags" {
   description = "tags by default"
 }
 
-variable "core_count" {
+variable "cpu_core_count" {
   type        = string
   default     = "4"
   description = "Numero de cores CPU"

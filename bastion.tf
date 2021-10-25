@@ -5,6 +5,15 @@ data "huaweicloud_images_image" "bastion" {
 
 data "huaweicloud_availability_zones" "myaz" {}
 
+
+data "huaweicloud_compute_flavors" "flavors" {
+  count             = var.node_count
+  availability_zone = data.huaweicloud_availability_zones.myaz.names[0]
+  performance_type  = "normal"
+  cpu_core_count    = var.cpu_core_count
+  memory_size       = var.memory_size
+}
+
 resource "huaweicloud_compute_keypair" "bastion" {
   name       = "${var.name}-bastion-keypair"
   public_key = var.public_key

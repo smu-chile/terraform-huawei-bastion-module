@@ -24,3 +24,16 @@ variable "flavor_id" {
 variable "default_tags" {
   description = "tags by default"
 }
+
+variable "core_count" {
+  type        = string
+  default     = "4"
+  description = "Numero de cores CPU"
+}
+
+variable "memory_size" {
+  type        = string
+  default     = "8"
+  description = "Memoria RAM"
+}
+

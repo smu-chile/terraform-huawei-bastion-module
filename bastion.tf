@@ -7,7 +7,6 @@ data "huaweicloud_availability_zones" "myaz" {}
 
 
 data "huaweicloud_compute_flavors" "flavors" {
-  count             = var.node_count
   availability_zone = data.huaweicloud_availability_zones.myaz.names[0]
   performance_type  = "normal"
   cpu_core_count    = var.cpu_core_count

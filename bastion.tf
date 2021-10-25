@@ -45,7 +45,7 @@ resource "huaweicloud_networking_secgroup_rule" "outbound_ssh" {
 resource "huaweicloud_compute_instance" "bastion" {
   name                        = "${var.name}-bastion"
   image_id                    = data.huaweicloud_images_image.bastion.id
-  flavor_id                   = var.flavor_id
+  flavor_id                   = data.huaweicloud_compute_flavors.flavors.ids[0]
   security_group_ids          = [huaweicloud_networking_secgroup.bastion.id]
   key_pair                    = huaweicloud_compute_keypair.bastion.name
   availability_zone           = data.huaweicloud_availability_zones.myaz.names[0]

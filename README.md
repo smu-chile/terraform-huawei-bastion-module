@@ -1,3 +1,9 @@
+## Architecture Diagram
+
+![Architecture Diagram](docs/images/architecture_diagram.png)
+
+
+
 ## Requirements
 
 | Name | Version |

@@ -18,12 +18,13 @@ resource "huaweicloud_networking_secgroup" "bastion" {
 }
 
 resource "huaweicloud_networking_secgroup_rule" "inbound_ssh" {
+  for_each          = toset(jsondecode(var.ingress-cidr))
   direction         = "ingress"
   ethertype         = "IPv4"
   protocol          = "tcp"
   port_range_min    = 22
   port_range_max    = 22
-  remote_ip_prefix  = var.ingress-cidr
+  remote_ip_prefix  = each.key
   security_group_id = huaweicloud_networking_secgroup.bastion.id
 }
 

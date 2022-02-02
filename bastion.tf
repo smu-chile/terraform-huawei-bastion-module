@@ -35,7 +35,7 @@ resource "huaweicloud_networking_secgroup_rule" "inbound_ssh" {
 }
 
 resource "huaweicloud_networking_secgroup_rule" "inbound_ssh_ansible" {
-  count = var.ingress-cidr-ansible != "" ? 1 : 0
+  count             = var.ingress-cidr-ansible != "" ? 1 : 0
   direction         = "ingress"
   ethertype         = "IPv4"
   protocol          = "tcp"

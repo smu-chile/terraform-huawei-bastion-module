@@ -40,9 +40,7 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_cpu_core_count"></a> [cpu\_core\_count](#input\_cpu\_core\_count) | CPU Core Count | `string` | `"4"` | no |
 | <a name="input_default_tags"></a> [default\_tags](#input\_default\_tags) | Default tag | `any` | n/a | yes |
-| <a name="input_flavor_id"></a> [flavor\_id](#input\_flavor\_id) | Huawei Instance Id | `string` | n/a | yes |
 | <a name="input_memory_size"></a> [memory\_size](#input\_memory\_size) | RAM | `string` | `"8"` | no |
 | <a name="input_name"></a> [name](#input\_name) | Prefix name | `string` | n/a | yes |
 | <a name="input_public_key"></a> [public\_key](#input\_public\_key) | SSH public key | `string` | n/a | yes |

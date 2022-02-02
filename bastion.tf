@@ -6,13 +6,6 @@ data "huaweicloud_images_image" "bastion" {
 data "huaweicloud_availability_zones" "myaz" {}
 
 
-data "huaweicloud_compute_flavors" "flavors" {
-  availability_zone = data.huaweicloud_availability_zones.myaz.names[0]
-  performance_type  = "normal"
-  cpu_core_count    = var.cpu_core_count
-  memory_size       = var.memory_size
-}
-
 resource "huaweicloud_compute_keypair" "bastion" {
   name       = "${var.name}-bastion-keypair"
   public_key = var.public_key
@@ -57,7 +50,7 @@ resource "huaweicloud_networking_secgroup_rule" "outbound_ssh" {
 resource "huaweicloud_compute_instance" "bastion" {
   name                        = "${var.name}-bastion"
   image_id                    = data.huaweicloud_images_image.bastion.id
-  flavor_id                   = data.huaweicloud_compute_flavors.flavors.ids[0]
+  flavor_id                   = var.bastion_flavor_id
   security_group_ids          = [huaweicloud_networking_secgroup.bastion.id]
   key_pair                    = huaweicloud_compute_keypair.bastion.name
   availability_zone           = data.huaweicloud_availability_zones.myaz.names[0]

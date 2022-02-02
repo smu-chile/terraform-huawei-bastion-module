@@ -18,24 +18,24 @@ resource "huaweicloud_networking_secgroup" "bastion" {
 }
 
 resource "huaweicloud_networking_secgroup_rule" "inbound_ssh" {
-  direction         = "ingress"
-  ethertype         = "IPv4"
-  protocol          = "tcp"
-  port_range_min    = 22
-  port_range_max    = 22
-  remote_ip_prefix  = var.ingress-cidr
-  security_group_id = huaweicloud_networking_secgroup.bastion.id
-}
-
-resource "huaweicloud_networking_secgroup_rule" "inbound_ssh_ansible" {
-  
-  for_each          = toset(jsondecode(var.ingress-cidr-ansible))
+  for_each          = toset(jsondecode(var.ingress-cidr))
   direction         = "ingress"
   ethertype         = "IPv4"
   protocol          = "tcp"
   port_range_min    = 22
   port_range_max    = 22
   remote_ip_prefix  = each.key
+  security_group_id = huaweicloud_networking_secgroup.bastion.id
+}
+
+resource "huaweicloud_networking_secgroup_rule" "inbound_ssh_ansible" {
+  count             = var.ingress-cidr-ansible != "" ? 1 : 0
+  direction         = "ingress"
+  ethertype         = "IPv4"
+  protocol          = "tcp"
+  port_range_min    = 22
+  port_range_max    = 22
+  remote_ip_prefix  = var.ingress-cidr-ansible
   security_group_id = huaweicloud_networking_secgroup.bastion.id
 }
 

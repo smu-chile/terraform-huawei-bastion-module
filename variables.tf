@@ -35,7 +35,7 @@ variable "bastion_flavor_id" {
 
 variable "ingress-cidr" {
   description = "cidr para reglas ingress security group"
-  default     = ["0.0.0.0/0"]
+  default     = "[\"0.0.0.0/0\"]"
 }
 
 variable "ingress-cidr-ansible" {

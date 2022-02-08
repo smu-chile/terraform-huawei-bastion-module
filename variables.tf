@@ -18,11 +18,6 @@ variable "public_key" {
   description = "SSH public key"
 }
 
-variable "flavor_id" {
-  type        = string
-  description = "Huawei Instance Id"
-}
-
 variable "default_tags" {
   description = "Default tag"
 }

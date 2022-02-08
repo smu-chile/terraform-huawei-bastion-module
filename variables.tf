@@ -18,11 +18,6 @@ variable "public_key" {
   description = "SSH public key"
 }
 
-variable "flavor_id" {
-  type        = string
-  description = "Huawei Instance Id"
-}
-
 variable "default_tags" {
   description = "Default tag"
 }
@@ -35,7 +30,7 @@ variable "bastion_flavor_id" {
 
 variable "ingress-cidr" {
   description = "cidr para reglas ingress security group"
-  default     = "0.0.0.0/0"
+  default     = "[\"0.0.0.0/0\"]"
 }
 
 variable "ingress-cidr-ansible" {
